@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Provider, createClient, useQuery } from 'urql';
+import { metricActions } from "../Features/Weather/metrix_reducer"
+import { IState } from '../store/'
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
@@ -56,16 +58,12 @@ const MenuProps = {
 };
 
 const names = [
-    'Oliver Hansen',
-    'Van Henry',
-    'April Tucker',
-    'Ralph Hubbard',
-    'Omar Alexander',
-    'Carlos Abbott',
-    'Miriam Wagner',
-    'Bradley Wilkerson',
-    'Virginia Andrews',
-    'Kelly Snyder',
+    'waterTemp',
+    'casingPressure',
+    'injValveOpen',
+    'flareTemp',
+    'oilTemp',
+    'tubingPressure',
 ];
 
 function getStyles(name, personName, theme) {
@@ -80,12 +78,16 @@ function getStyles(name, personName, theme) {
 
 export default function SimpleCard() {
     const classes = useStyles();
+    const dispatch = useDispatch();
+
 
     const theme = useTheme();
     const [personName, setPersonName] = React.useState([]);
 
     const handleChange = event => {
         setPersonName(event.target.value);
+        dispatch(metricActions.selectMetric(event.target.value))
+
     };
 
     const handleChangeMultiple = event => {
@@ -98,6 +100,8 @@ export default function SimpleCard() {
         }
         setPersonName(value);
     };
+
+    
 
     return (
         <div>
