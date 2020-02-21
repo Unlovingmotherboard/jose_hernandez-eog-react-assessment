@@ -9,6 +9,8 @@ import Header from './components/Header';
 import Wrapper from './components/Wrapper';
 import NowWhat from './components/NowWhat';
 
+import Dashboard from "./components/Dashboard"
+
 const store = createStore();
 const theme = createMuiTheme({
   palette: {
@@ -30,6 +32,7 @@ const App = () => (
     <Provider store={store}>
       <Wrapper>
         <Header />
+        <Dashboard/>
         <NowWhat />
         {/*THIS IS WHERE YOUR PART OF THE APP WILL GO*/}
         <ToastContainer />
