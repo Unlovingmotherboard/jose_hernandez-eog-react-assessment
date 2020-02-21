@@ -31,6 +31,7 @@ const App = () => (
       <Wrapper>
         <Header />
         <NowWhat />
+        {/*THIS IS WHERE YOUR PART OF THE APP WILL GO*/}
         <ToastContainer />
       </Wrapper>
     </Provider>
