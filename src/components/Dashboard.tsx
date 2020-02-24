@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Provider, createClient, useQuery } from 'urql';
-import { metricActions } from "../Features/Weather/metrix_reducer"
-import { IState } from '../store/'
+import { metricActions } from "../Features/Weather/metrix_reducer2"
+import { IState } from '../store';
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
@@ -19,8 +19,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
 import Chip from '@material-ui/core/Chip';
-
-
 
 const useStyles = makeStyles({
     root: {
@@ -66,7 +64,7 @@ const names = [
     'tubingPressure',
 ];
 
-function getStyles(name, personName, theme) {
+function getStyles(name: any, personName: string | any[], theme: { typography: { fontWeightRegular: any; fontWeightMedium: any; }; }) {
     return {
         fontWeight:
             personName.indexOf(name) === -1
@@ -84,13 +82,13 @@ export default function SimpleCard() {
     const theme = useTheme();
     const [personName, setPersonName] = React.useState([]);
 
-    const handleChange = event => {
+    const handleChange = (event: { target: { value: React.SetStateAction<never[]>; }; }) => {
         setPersonName(event.target.value);
         dispatch(metricActions.selectMetric(event.target.value))
-
+        getMetrics();
     };
 
-    const handleChangeMultiple = event => {
+    const handleChangeMultiple = (event: { target: { options: any; }; }) => {
         const { options } = event.target;
         const value = [];
         for (let i = 0, l = options.length; i < l; i += 1) {
@@ -101,7 +99,11 @@ export default function SimpleCard() {
         setPersonName(value);
     };
 
-    
+
+    const getMetrics = (IState: undefined) => {
+        console.log(IState)
+    }
+
 
     return (
         <div>
@@ -130,6 +132,9 @@ export default function SimpleCard() {
             </div>
 
             <div> {/*THIS WILL DISPLAY THE NUMERIC VALUES*/}
+
+                
+
                 <Card className={classes.root}>
                     <CardContent>
                         <Typography className={classes.title} color="textSecondary" gutterBottom>

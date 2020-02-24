@@ -9,7 +9,7 @@ import Header from './components/Header';
 import Wrapper from './components/Wrapper';
 import NowWhat from './components/NowWhat';
 
-import Dashboard from "./components/Dashboard"
+import Dashboard from "./components/Dashboard.tsx"
 
 const store = createStore();
 const theme = createMuiTheme({
