@@ -8,7 +8,7 @@ const useStyles = makeStyles({
 });
 
 const Wrapper: React.FC = ({ children }) => {
-  const classes = useStyles();
+  const classes = useStyles({});
   return <div className={classes.wrapper}>{children}</div>;
 };
 

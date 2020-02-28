@@ -74,35 +74,40 @@ function getStyles(name: any, personName: string | any[], theme: { typography: {
 }
 
 
-export default function SimpleCard() {
-    const classes = useStyles();
+export default function SimpleCard(this: any) {
+    const classes = useStyles({});
     const dispatch = useDispatch();
 
 
     const theme = useTheme();
     const [personName, setPersonName] = React.useState([]);
 
-    const handleChange = (event: { target: { value: React.SetStateAction<never[]>; }; }) => {
-        setPersonName(event.target.value);
-        dispatch(metricActions.selectMetric(event.target.value))
-        getMetrics();
-    };
+    // const handleChange = (event: { target: { value: React.SetStateAction<never[]>; }; }) => {
+    //     setPersonName(event.target.value);
+    //     dispatch(metricActions.selectMetric(event.target.value))
+    //     getMetrics();
+    // };
 
-    const handleChangeMultiple = (event: { target: { options: any; }; }) => {
-        const { options } = event.target;
-        const value = [];
-        for (let i = 0, l = options.length; i < l; i += 1) {
-            if (options[i].selected) {
-                value.push(options[i].value);
-            }
-        }
-        setPersonName(value);
-    };
+    // const handleChangeMultiple = (event: { target: { options: any; }; }) => {
+    //     const { options } = event.target;
+    //     const value = [];
+    //     for (let i = 0, l = options.length; i < l; i += 1) {
+    //         if (options[i].selected) {
+    //             value.push(options[i].value);
+    //         }
+    //     }
+    //     setPersonName(value);
+    // };
 
 
     const getMetrics = (IState: undefined) => {
         console.log(IState)
     }
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>  {
+        // No longer need to cast to any - hooray for react!
+        console.log(e)
+      }
 
 
     return (

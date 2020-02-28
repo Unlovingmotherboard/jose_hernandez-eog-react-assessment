@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 });
 
 export default () => {
-  const classes = useStyles();
+  const classes = useStyles({});
   return (
     <Card className={classes.card}>
       <CardHeader title="OK, Jose_Hernandez, you're all setup. Now What?" />

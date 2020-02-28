@@ -12,7 +12,7 @@ const useStyles = makeStyles({
 });
 
 export default () => {
-  const classes = useStyles();
+  const classes = useStyles({});
 
   const name = "Jose_Hernandez's";
   return (
